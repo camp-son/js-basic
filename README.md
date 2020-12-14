@@ -28,11 +28,11 @@ Javascript basic
         - Global 변수는 최소한으로 사용
     - var를 사용하면 안되는 이유
         - `Hoisting` 선언 위치와 상관없이 최상위로 가져온다.
-            ```ts
+```js
 console.log(name) // undefined
 name = 4;
 var name;
-            ```
+```
         - `Block scope 미제공` 변수를 어디서든 사용할 수 있다.
 3. Contants(Immutable)
     - 변수와 같이 메모리 할당이 되지만, 초기값을 변경할 수 없다.
