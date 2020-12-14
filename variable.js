@@ -4,10 +4,13 @@
 'use strict';
 
 // 2. Variable
-let name = 'camp-son';
-console.log(name);
-name = 'Hello World!';
-console.log(name);
+{
+    let test = 'camp-son';
+    console.log(test);
+    test = 'Hello World!';
+    console.log(test);
+}
+// console.log(test);
 
 // var (don't ever use this)
 // hoisting
