@@ -48,7 +48,7 @@
 - 자바스크립트 엔진이 효율적으로 분석할 수 있어 성능개선도 될 수 있다.
 
 ## Variable
-#### 1. `var` vs `let`
+#### 1. `var` vs `let` (read/write)
 - ES6 이전까지 var 키워드를 사용하다가 ES6 이후 let 키워드가 추가되었고 기능이 추가되었다.
 - `Hoisting` 변수의 선언 위치와 상관없이 최상위로 가져간다.
     ```js
@@ -64,7 +64,7 @@
     }
     console.log(author); // Error - Uncaught ReferenceError: author is not defined
     ```
-#### 2. Constant
+#### 2. Constant (read only)
 - es6에서 let과 같이 추가된 변수 선언 키워드이다.
 - 변수에 값을 할당한 후에 변경이 불가능하다.
 - 단, 레퍼런스를 갖는 변수안에 있는 값은 변경할 수 있다.
@@ -72,8 +72,9 @@
 const value = 'Hello';
 // value = 'World'; // Error - Uncaught TypeError: Assignment to constant variable.
 ```
-#### 3. Mutable & Immutable
-- TODO
+- **Mutable & Immutable**
+    - `Mutable`   데이터는 변경하지 못하지만, 내부에서 가리키고 있는 값을 변경할 수 있는 경우, JS안에 object 형태
+    - `Immutable` 데이터 자체를 절대 변경하지 못하는 경우, primitive type 또는 frozen object 
 #### 4. Data type
 - Primitive type
     - 더 이상 작은 단위로 나눠질 수 없는 한가지 항목
@@ -94,4 +95,4 @@ const value = 'Hello';
     ```
 - Functional type(first-class function)
     - 다른 변수에 할당 가능하고, 파라미터, 리턴값으로도 사용할 수 있다.
-    - TODO
+
