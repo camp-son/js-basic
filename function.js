@@ -49,4 +49,4 @@ console.log(calculate('subtract', 1, 3));
 console.log(calculate('divide', 1, 3));
 console.log(calculate('multiply', 1, 3));
 console.log(calculate('remainder', 1, 3));
-console.log(calculate('any', 1, 3));
+// console.log(calculate('any', 1, 3));
