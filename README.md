@@ -9,8 +9,7 @@
 - [변수](#variable)
     - [var와 let 차이](#1-var-vs-let)
     - [불변 상수](#2-constant)
-    - [가변성변수와 불가변성변수](#3-mutable--immutable)
-    - [데이터 타입](#4-data-type)
+    - [데이터 타입](#3-data-type)
 - [함수](#function)
     - [파라미터](#1-parameter)
     - [지역스코프](#2-local-scope)
@@ -18,6 +17,12 @@
     - [콜백함수](#4-callback-function)
     - [Arrow Function](#5-arrow-function)
     - [Ref. IIFE](#ref-iifeimmediately-invoked-function-expression)
+- [함수](#class)
+    - [getter/setter](#1-getter-setter)
+    - [public/private](#2-fields-public-private)
+    - [static](#3-static-properties-and-methods)
+    - [상속 & 다형성](#4-inheritance--polymorphism)
+    - [instanceof](#5-instanceof)
     
 ## 기본 설명
 - `동적 타입 언어`으로 타입을 선언하여 변수에 값을 지정하지 않고, 런타임에서 값을 할당하였을 때 타입이 정해진다.
@@ -82,7 +87,7 @@ const value = 'Hello';
 - **Mutable & Immutable**
     - `Mutable`   데이터는 변경하지 못하지만, 내부에서 가리키고 있는 값을 변경할 수 있는 경우, JS안에 object 형태
     - `Immutable` 데이터 자체를 절대 변경하지 못하는 경우, primitive type 또는 frozen object 
-#### 4. Data type
+#### 3. Data type
 - Primitive type
     - 더 이상 작은 단위로 나눠질 수 없는 한가지 항목
     - `number`, `string`, `boolean`, `null`, `undefined`, `symbol`
@@ -219,3 +224,76 @@ printMessage();
           console.log('IIFE');    
       })();
     ```
+  
+
+## Class
+- 데이터의 틀을 정의한다.
+- Class에 데이터를 적용하면 object가 된다.
+- ES6에서 추가되었다.
+- 형태
+    ```js
+      class Person {
+          constructor(name, age) {
+              this.name = name;
+              this.age = age;
+          }
+          speak() {
+              console.log(`${this.name}: hello !`);
+          }    
+      }
+      const campSon = new Person('camp son', 30);
+      campSon.speak();
+    ```
+#### 1. Getter/ Setter
+- 캡슐화를 위해 사용하기도 하고, 원하지 않은 값이 들어왔을 때 처리하기 위해 사용한다.
+- 외부에서 클래스 내부에 있는 변수를 직접 컨트롤하지 못하도록 하기 위해서도 사용한다.
+    ```js
+      class User {
+          constructor(name, age) {
+              this.name = name;
+              this.age = age;
+          }
+          get age() {
+              return this._age;
+          }
+          set age(value) {
+              this._age = value;
+          }
+      } 
+    ```
+#### 2. Fields (public, private)
+- 클래스에 있는 내부 필드 선언을 #의 유무를 통해 public인지, private인지 구분할 수 있게 해준다.
+- 최근 추가된 문법
+    ```js
+      class Field {
+          publicField = 2;
+          #privateField = 0;
+      }
+      const field = new Field();
+      console.log(field.publicField); // 2
+      console.log(field.privateField); // undefined
+    ```
+#### 3. Static properties and methods
+- 클래스를 생성하지 않고, 직접 접근할 수 있다.
+- 클래스 인스턴스가 아닌, 클래스 자체에 선언되어 있는 속성 또는 함수이다.
+- 최근 추가된 문법
+    ```js
+      class Field {
+          static member = 'Member !';
+          static call() {
+              console.log(`Call ${Field.member}`);
+          }
+      }
+      
+      const field = new Field();
+      console.log(field.member); // undefined
+      console.log(field.call); // undefined
+      console.log(Field.member); // Member !
+      Field.call(); // Call Member !
+    ```
+#### 4. Inheritance & Polymorphism
+- 상속: 부모의 속성과 메서드를 사용할 수 있다.
+- 다형성: 상속받은 메서드를 각 클래스에 맞게 변형하거나, 확장할 수 있다.
+#### 5. instanceof
+- 생성된 인스턴스가 클래스의 인스턴스인지 체크할 수 있다.
+- 클래스의 부모 클래스와 비교하면 해당 클래스의 인스턴스와 일치한다.
