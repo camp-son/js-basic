@@ -297,3 +297,63 @@ printMessage();
 #### 5. instanceof
 - 생성된 인스턴스가 클래스의 인스턴스인지 체크할 수 있다.
 - 클래스의 부모 클래스와 비교하면 해당 클래스의 인스턴스와 일치한다.
+
+## Object
+- key: value의 집합체
+- 생성
+    ```js
+      const obj1 = {};
+      const obj2 = new Object();
+
+      // add property (Non preferred)
+      obj1.name = 'camp-son';
+
+      // delete property (Non preferred)
+      delete obj1.name;
+    ```
+#### 1. Computed object
+- 키의 문자열로 object에 있는 값을 가져온다.
+- 동적 속성 키의 값을 가져올 때 주로 사용한다.
+    ```js
+      const obj1 = {name: 'camp-son'};
+      console.log(obj1.name);
+      console.log(obj1['name']);
+    ```
+#### 2. Property value shorthand
+- key 명칭과 value 변수의 이름이 동일하다면 줄여서 작성할 수 있다.
+    ```js
+      function makeObject(name, age) {
+          return {
+              name,
+              age
+          };
+      }   
+    ```
+#### 3. Constructor function
+```js
+function Person(name, age) {
+    // this = {};
+    this.name = name;
+    this.age = age;
+    // return this;
+}
+const person = new Person('name', 20);
+console.log(person); // {name: 'name', age: 20}
+```
+#### 4. in operator
+- object 안에 키가 있는지 확인하는 연산자
+    ```js
+      const obj = {name: 'camp-son'};
+      console.log('key' in obj); // false
+      console.log('name' in obj); // true
+    ```
+#### 5. for..in vs for..of
+- for..in 은 object를 순차로 돌 때 사용한다.
+- for..of 는 iterable한 데이터를 돌 때 사용한다.
+```js
+    // for in
+    // for of
+```
+#### 6. cloning
+- object를 다른 변수에 그냥 할당할 경우, 레퍼런스를 할당하게 되어 동일한 객체를 바라보게된다.
+- Object.assign 메서드를 이용하여 새로운 객체를 생성할 수 있다.
