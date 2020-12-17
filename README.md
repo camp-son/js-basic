@@ -11,6 +11,13 @@
     - [불변 상수](#2-constant)
     - [가변성변수와 불가변성변수](#3-mutable--immutable)
     - [데이터 타입](#4-data-type)
+- [함수](#function)
+    - [파라미터](#1-parameter)
+    - [지역스코프](#2-local-scope)
+    - [함수반환](#3-return-a-value)
+    - [콜백함수](#4-callback-function)
+    - [Arrow Function](#5-arrow-function)
+    - [Ref. IIFE](#ref-iifeimmediately-invoked-function-expression)
     
 ## 기본 설명
 - `동적 타입 언어`으로 타입을 선언하여 변수에 값을 지정하지 않고, 런타임에서 값을 할당하였을 때 타입이 정해진다.
@@ -95,4 +102,120 @@ const value = 'Hello';
     ```
 - Functional type(first-class function)
     - 다른 변수에 할당 가능하고, 파라미터, 리턴값으로도 사용할 수 있다.
-
+    
+## Function
+- 프로그램을 구성하는 기본적인 기능 블록이고, 재사용이 가능하다.
+- 네이밍 작성시 동사 prefix 선호, 이름 짓기가 어려운 경우 기능 분리
+- Named function은 선언 이전에 호출하여도 호이스팅하여 문제가 없지만, Anonymous function은 호이스팅이 되지 않아 선언 이전에 호출할 경우 오류가 발생한다.
+- 형태
+    ```js
+      // Named function
+      function name(arg1, arg2) {
+          // ... 
+          // return; 
+      }
+      // anonymous function
+      const print = function () {
+          // ...
+      };
+    ```
+#### 1. Parameter
+- 함수 호출시 전달 받을 값
+- primitive type인 경우 value가 전달이 되고, object type 인 경우 레퍼런스가 전달된다.
+- Default parameter
+    ```js
+      function func(arg1, arg2 = 'default value')  {
+          // ...
+      }
+  
+      func('a') // arg1 = 'a', arg2 = 'default value'
+      func('a', 'b') // arg1 = 'a', arg2 = 'b'
+    ```
+- Rest parameter
+    ```js
+      function func(...args) {
+          for (const arg of args) {
+              console.log(arg);
+          }   
+      }
+      func('a', 'b', 'c'); // a b c
+      func(1, 2, 3); // 1 2 3 
+    ```
+#### 2. Local Scope
+- 밖에서는 안을 볼 수 없지만, 안에서 밖을 볼 수 있다라는 형태로 알면 된다.
+```js
+const globalMessage = 'global';
+function printMessage() {
+    let message = 'Hello';
+    console.log(message); // Hello
+    console.log(globalMessage); // global
+    function printChildMessage() {
+        let childMessage = 'World';
+        console.log(message); // Hello
+        console.log(childMessage); // World
+    }
+    // console.log(childMessage); // Error
+}
+// console.log(message); // Error
+printMessage();
+```
+#### 3. Return a value
+- 함수의 결과를 반환할 수 있다.
+    ```js
+      function sum(a, b) {
+          return a + b;
+      }
+  
+      console.log(sum(1, 3)); // 4
+    ```
+- Early return
+    - Bad case
+        ```js
+        function func(amount) {
+            if (amount > 10) {
+                // logic
+            }
+        }
+        ```
+    - Good case
+        ```js
+        function func(amount) {
+            if (amount <= 10) {
+                return;
+            }
+            // logic
+        }
+        ```
+#### 4. Callback function
+- 파라미터로 함수를 전달하여, 함수 내에서 전달받은 함수를 실행하도록 한다.
+    ```js
+      function answerQuiz(question, yes, no) {
+          if (question === 'Hello') {
+              yes();
+          } else {
+              no();
+          }       
+      }
+      const yes = function () { console.log('YES !!'); };
+      const no = function () { console.log('NO !!'); };
+  
+      answerQuiz('Bye', yes, no); // NO !!
+      answerQuiz('Hello', yes, no); // YES !!
+    ```
+#### 5. Arrow function
+- ES6에서 추가된 새로운 함수 표기 형태
+    ```js
+      const print = () => console.log('Print');
+      const sum = (a, b) => a + b;
+  
+      print();
+      sum(1, 2);
+    ```
+  
+#### Ref. IIFE(Immediately Invoked Function Expression)
+- function을 선언과 동시에 실행시키기 위해 사용하는 방법
+    ```js
+      (function IIFE() {
+          console.log('IIFE');    
+      })();
+    ```
