@@ -108,6 +108,7 @@ const value = 'Hello';
 - Functional type(first-class function)
     - 다른 변수에 할당 가능하고, 파라미터, 리턴값으로도 사용할 수 있다.
     
+
 ## Function
 - 프로그램을 구성하는 기본적인 기능 블록이고, 재사용이 가능하다.
 - 네이밍 작성시 동사 prefix 선호, 이름 짓기가 어려운 경우 기능 분리
@@ -357,3 +358,43 @@ console.log(person); // {name: 'name', age: 20}
 #### 6. cloning
 - object를 다른 변수에 그냥 할당할 경우, 레퍼런스를 할당하게 되어 동일한 객체를 바라보게된다.
 - Object.assign 메서드를 이용하여 새로운 객체를 생성할 수 있다.
+
+## Array
+- 선언 방식
+    - new Array();
+    - [];
+#### 1. Looping
+- for
+    ```js
+       for (let i = 0; i < fruits.length; i++) {
+           console.log(fruits[i]);
+       }
+    ```
+- for of
+    ```js
+      for (const fruit of fruits) {
+          console.log(fruit);
+      }
+    ```
+- forEach
+    ```js
+      fruits.forEach((fruit) => console.log(fruit));
+    ```
+#### 2. Addition, Deletion
+- 배열은 뒤에서부터 접근하면 연산이 빠르고, 앞에서부터 접근하는 경우 연산이 느리다.
+- Addition
+    - push: 배열의 맨 뒤에 데이터를 추가
+    - unshift: 배열의 맨 앞에 데이터를 추가
+        > push 보다 느림
+        > 기존에 있던 데이터의 인덱스를 뒤로 하나씩 밀고 0 인덱스에 데이터를 넣어 연산이 많아져 느리다.
+    - concat: 배열 뒤에 인자로 넘어온 배열을 추가
+- Deletion
+    - pop: 배열의 맨 뒤에 있는 데이터 제거
+    - shift: 배열의 맨 앞에 있는 데이터를 제거
+        > pop 보다 느림
+        > 0 인덱스의 데이터를 지우고 남은 항목의 인덱스들을 하나씩 앞으로 당기는 작업으로 연산이 많아져 느리다.
+    - splice: 지우고자 하는 인덱스부터 몇 개를 지울지 설정하여 제거, 갯수를 설정하지 않은 경우 맨뒤까지 제거
+#### 3. Searching
+- indexOf: 인자로 들어오는 값의 인덱스를 반환
+- includes: 인자로 들어오는 값이 있는지 반환
+- lastIndexOf: 인자로 들어오는 값을 마지막부터 찾아 인덱스를 반환한다.
