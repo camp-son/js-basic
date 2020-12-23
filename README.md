@@ -27,6 +27,8 @@
     - [Object를 Json으로 변환](#1-object-to-json)
     - [Json을 Object로 변환](#2-json-to-object)
     - [참고 사이트](#ref-sites)
+- [Asynchronous](#async)
+    - [Callback](#1-callback-function)
     
 ## 기본 설명
 - `동적 타입 언어`으로 타입을 선언하여 변수에 값을 지정하지 않고, 런타임에서 값을 할당하였을 때 타입이 정해진다.
@@ -418,3 +420,11 @@ console.log(person); // {name: 'name', age: 20}
 - [https://jsonbeautifier.org](https://jsonbeautifier.org)
 - [https://jsonparser.org](https://jsonparser.org)
 - [https://tools.learningcontainer.com/json-validator/](https://tools.learningcontainer.com/json-validator/)
+
+## Async
+- Javascript는 동기적이다.
+- 호이스팅 이후에 작성한 순서대로 동기적으로 동작한다.
+#### 1. Callback function
+- 함수의 내부에서 다른 함수를 실행할 수 있도록 파라미터로 전달한다.
+- `Synchronous callback` 콜백으로 넘긴 함수를 내부에서 동기로 실행한다.
+- `Asynchronous callback` 콜백으로 넘긴 함수를 내부에서 비동기로 실행한다.
