@@ -23,6 +23,10 @@
     - [static](#3-static-properties-and-methods)
     - [상속 & 다형성](#4-inheritance--polymorphism)
     - [instanceof](#5-instanceof)
+- [JSON](#json)
+    - [Object를 Json으로 변환](#1-object-to-json)
+    - [Json을 Object로 변환](#2-json-to-object)
+    - [참고 사이트](#ref-sites)
     
 ## 기본 설명
 - `동적 타입 언어`으로 타입을 선언하여 변수에 값을 지정하지 않고, 런타임에서 값을 할당하였을 때 타입이 정해진다.
@@ -398,3 +402,19 @@ console.log(person); // {name: 'name', age: 20}
 - indexOf: 인자로 들어오는 값의 인덱스를 반환
 - includes: 인자로 들어오는 값이 있는지 반환
 - lastIndexOf: 인자로 들어오는 값을 마지막부터 찾아 인덱스를 반환한다.
+
+## JSON
+- Javascript Object Notation
+- 간단한 파일 포맷이다.
+- 데이터를 서버와 통신할 때 직렬화할 때 사용한다.
+- 프로그래밍 언어와 플랫폼에 상관없이 사용할 수 있다.
+#### 1. Object to JSON
+- JSON 객체의 stringify 메서드 사용
+- Symbol이나 Function 같은 경우엔 배제된다.
+#### 2. JSON to Object
+- JSON 객체의 parse 메서드 사용
+#### Ref. sites
+- [https://jsondiff.com](https://jsondiff.com)
+- [https://jsonbeautifier.org](https://jsonbeautifier.org)
+- [https://jsonparser.org](https://jsonparser.org)
+- [https://tools.learningcontainer.com/json-validator/](https://tools.learningcontainer.com/json-validator/)
