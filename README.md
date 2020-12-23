@@ -30,6 +30,7 @@
 - [Asynchronous](#async)
     - [Callback](#1-callback-function)
     - [Promise](#2-promise)
+    - [Async/Await](#3-asyncawait)
     
 ## 기본 설명
 - `동적 타입 언어`으로 타입을 선언하여 변수에 값을 지정하지 않고, 런타임에서 값을 할당하였을 때 타입이 정해진다.
@@ -437,3 +438,10 @@ console.log(person); // {name: 'name', age: 20}
     - `Consumer` then, catch, finally를 통해 값을 받아 데이터를 처리할 수 있다.
 - `Chaining` 데이터 처리를 then 체이닝을 통해 데이터를 가공하거나, 다른 API로 변경하거나 할 수 있다.
 - `Error handling` catch 메서드를 통해 예외를 캐치하고, Promise 별 예외처리를 하는 경우엔 바로 뒤에 catch를 작성해준다.
+#### 3. async/await
+- Promise를 깔끔하게 사용할 수 있도록 추가된 문법
+- `async` 해당 함수를 Promise로 감싸게 되는 형태가 되고, 반환값을 resolve 한다.
+- `await` async가 선언된 함수에서 응답을 기다렸다가 다음 동작을 수행할 수 있도록 한다.
+- 여러 Promise에 대해 await 처리할 때, 병렬처리가 될 수 있다. 이 때, `Promise.all` 을 사용하면 용이하다.
+
+
