@@ -29,6 +29,7 @@
     - [참고 사이트](#ref-sites)
 - [Asynchronous](#async)
     - [Callback](#1-callback-function)
+    - [Promise](#2-promise)
     
 ## 기본 설명
 - `동적 타입 언어`으로 타입을 선언하여 변수에 값을 지정하지 않고, 런타임에서 값을 할당하였을 때 타입이 정해진다.
@@ -428,3 +429,11 @@ console.log(person); // {name: 'name', age: 20}
 - 함수의 내부에서 다른 함수를 실행할 수 있도록 파라미터로 전달한다.
 - `Synchronous callback` 콜백으로 넘긴 함수를 내부에서 동기로 실행한다.
 - `Asynchronous callback` 콜백으로 넘긴 함수를 내부에서 비동기로 실행한다.
+#### 2. Promise
+- Javascript에서 제공하는 비동기를 간편하게 처리하게 도와주는 Object
+- `State` pending -> fulfilled or rejected
+- Producer vs Consumer
+    - `Producer` Promise 객체, 단, 새로운 Promise가 생성되는 동시에 바로 실행이 되어 의도하지 않게 동작을 실행할 수 있다.
+    - `Consumer` then, catch, finally를 통해 값을 받아 데이터를 처리할 수 있다.
+- `Chaining` 데이터 처리를 then 체이닝을 통해 데이터를 가공하거나, 다른 API로 변경하거나 할 수 있다.
+- `Error handling` catch 메서드를 통해 예외를 캐치하고, Promise 별 예외처리를 하는 경우엔 바로 뒤에 catch를 작성해준다.
